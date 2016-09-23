@@ -34,8 +34,8 @@ class Expensify {
 
     public function get_all($return_json) {
         $data = array(
-            "command" => "Get",
-            "authToken" => $this->auth_token,
+            "command"         => "Get",
+            "authToken"       => $this->auth_token,
             "returnValueList" => "transactionList"
         );
 
