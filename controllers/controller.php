@@ -9,12 +9,24 @@ trait Controller {
 
         switch($filetype) {
         case 'application/json':
-            echo json_encode($this->action($params));
+            echo json_encode($this->action_wrapper($params));
             break;
         default:
-            echo $this->action($params);
+            echo $this->action_wrapper($params);
             break;
         }
+    }
+
+    private function action_wrapper($params)  {
+        $args = array($params);
+        if (method_exists($this, 'before_action_hook')) {
+            $args = array_merge($args, $this->before_action_hook($params));
+        }
+
+        return call_user_func_array(
+            array($this, 'action'),
+            $args
+        );
     }
 
     private function detect_filetype($extension) {

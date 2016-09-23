@@ -33,7 +33,7 @@ class Expensify {
         }
     }
 
-    public function get_all($return_json) {
+    public function get_all() {
         $data = array(
             "command"         => "Get",
             "authToken"       => $this->auth_token,
@@ -42,11 +42,7 @@ class Expensify {
 
         $endpoint = $this->base_url . http_build_query($data);
         $response = Utils::http_get($endpoint);
-        if ($return_json) {
-            return json_decode($response);
-        } else {
-            return $response;
-        }
+        return json_decode($response);
         return $response->transactionList;
     }
 
@@ -62,7 +58,7 @@ class Expensify {
 
         $endpoint = $this->base_url . http_build_query($data);
 
-        $response = Utils::http_get($endpoint);
+        $response = json_decode(Utils::http_get($endpoint));
         return $response;
     }
 }
