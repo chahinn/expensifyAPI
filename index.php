@@ -2,6 +2,7 @@
 
     require('lib/router.php');
     require('lib/params.php');
+    require('lib/expensify.php');
 
     $param_extractor = new Params();
     $params = $param_extractor->extract_params($_POST, $_GET);

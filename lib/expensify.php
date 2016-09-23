@@ -1,6 +1,7 @@
 <?php
-require("partner.php");
-require("utils.php");
+namespace Expensify;
+require("expensify_partner.php");
+require("expensify_utils.php");
 
 class Expensify {
 
@@ -23,7 +24,7 @@ class Expensify {
             $response = Utils::http_get($endpoint);
             $response = json_decode($response);
             $this->auth_token = $response->authToken;
-            return $this;
+            return $response;
         } catch (Exception $e) {
             switch($e->getCode())  {
                 case 500:

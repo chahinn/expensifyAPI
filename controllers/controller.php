@@ -27,4 +27,18 @@ trait Controller {
             return "text/html";
         }
     }
+
+    protected function validate_params($params, $checks)  {
+        foreach ($checks as $check) {
+            if (!isset($params[$check])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected function error_response($msg, $statusCode = 500) {
+        http_response_code($statusCode);
+        return array('error' => $msg);
+    }
 }

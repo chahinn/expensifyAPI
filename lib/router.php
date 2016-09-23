@@ -1,7 +1,5 @@
 <?php
 
-// ReflectionClass is used to load controllers
-
 // Controller Requirements
 require('controllers/controller.php');
 require('controllers/logged_in_controller.php');
@@ -13,6 +11,9 @@ require('controllers/list_transaction.php');
 require('controllers/create_transaction.php');
 
 class Router {
+
+    // TODO: Move routing functionality into a trait so this class can be
+    //       cleaned up
 
     var $extension_regex = '(\.(?P<extension>\w+))?';
     var $regex_suffix = '$';
@@ -36,6 +37,7 @@ class Router {
                            $this->extension_regex .
                            $this->regex_suffix .
                            '!';
+
             preg_match($route_regex, $path, $matches);
 
             if (!isset($matches['extension'])) {$matches['extension'] = 'html';}
