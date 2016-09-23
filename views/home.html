@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Expensify</title>
+        <link rel="stylesheet" type="text/css" href="static/expensify.css">
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="static/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="static/expensify.js"></script>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+
+        <div class="header">
+            <ul class="nav">
+                <img src="http://we.are.expensify.com/assets/img/logo-Expensify2.png" alt="Expensify" style="width:50;height:25px;">
+                <input type="button" name = "addattraction" id="addattraction" value="Add Attraction" >
+                <input type="button" name = "login" id="login" value="Login" >
+            </ul>
+        </div>
+
+        <div>
+            <form method="post" id="insertform" >
+                <fieldset>
+                    <legend>Enter Transaction Information:</legend>
+                    Created: <input type="created" name="created_at" id="created"> <span id="subjectmessage1" ></span><br>
+                    Amount: <input type="Amount" name="amount" id="Amount"><span id="subjectmessage2" ></span> <br>
+                    Merchant: <input type="Merchant" name="merchant" id="Merchant" ><span id="subjectmessage4" ></span><br>
+                    <br>
+                    <input type="submit" name="insertattr"value="Add Transaction"  >
+                </fieldset>
+            </form>
+        </div>
+
+
+        <div>
+            <form method="post" id="loginform" >
+                <fieldset>
+                    <legend>Enter Login Information:</legend>
+                    Username: <input type="Username" name="user_id" id="Username" value="expensifytest@mailinator.com"> <span id="subjectmessage1" ></span><br>
+                    Password: <input type="Password" name="user_secret" id="Password" value="hire_me"><span id="subjectmessage2" ></span> <br>
+                    <br>
+                    <input type="submit" name="loginsubmit"value="Login"  >
+                </fieldset>
+            </form>
+        </div>
+
+        <table id="transactions" style="width:100%">
+          <tr>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>Created At</th>
+          </tr>
+        </table>
+
+    </body>
+</html>
