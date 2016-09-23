@@ -9,17 +9,6 @@ $(document).ready(function(){
         return false;
     });
 
-    $("#login").click(function(){
-        if($("#loginform").is(":visible")){
-            $("#loginform").hide();
-        } else {
-            $("#loginform").show();
-        }
-        //don't follow the link (optional, seen as the link is just an anchor)
-        return false;
-    });
-
-
     $('form#insertform').submit(function(event){
         $.ajax({
             type: "POST",
@@ -86,6 +75,13 @@ $(document).ready(function(){
                 add_tx_row(rows[i]);
             }
         });
+    }
+
+
+    if (Cookies.get('expensifyAuthToken')) {
+        getAllData();
+    } else {
+        $("#loginform").show();
     }
 
 });
